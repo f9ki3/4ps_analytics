@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4ps</title>
+    {% include 'header_links.html' %}
+</head>
+<body>
+    
+    <div class="loader-4ps" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center">
+        <h1 style="font-size: 10rem;" class="fw-bolder">4ps</h1>
+    </div>
+    <div class="container register" style="display: none;">
+        <div class="row">
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
+                <h1 style="font-size: 10rem;" class="fw-bolder">4ps</h1>
+                <p class="text-uppercase m-0 p-0" style="letter-spacing: 2px;">Empowering 4Ps Communities</p>
+                <p class="text-uppercase m-0 p-0" style="letter-spacing: 2px;">ThroughData-Driven Precision for a Brighter</p>
+                <p class="text-uppercase m-0 p-0" style="letter-spacing: 2px;">Tomorrow</p>
+            </div>
+            <div class="col-12 col-md-6 p-3">
+                <div class="border rounded-4 p-5 mt-5">
+                    <h3 class="fw-bolder mb-5">SIGN UP</h3>
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control form-control-sm" id="firstName">
+                            </div>
+                            <div class="col-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control form-control-sm" id="lastName">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control form-control-sm" id="address">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="gender" class="form-label">Gender</label>
+                                <input type="text" class="form-control form-control-sm" id="gender">
+                            </div>
+                            <div class="col-6">
+                                <label for="birthday" class="form-label">Birthday</label>
+                                <input type="text" class="form-control form-control-sm" id="birthday">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="contact" class="form-label">Contact Number</label>
+                                <input type="text" class="form-control form-control-sm" id="contact">
+                            </div>
+                            <div class="col-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control form-control-sm" id="email">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control form-control-sm" id="password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control form-control-sm" id="confirmPassword">
+                        </div>
+                        <button class="btn btn-success w-100">Submit</button>
+                        <p class="mt-3">Already have an account? <a href="/login">Login</a></p>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    {% include 'footer_links.html' %}
+</body>
+</html>
