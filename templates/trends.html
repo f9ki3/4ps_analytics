@@ -1,0 +1,200 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4ps</title>
+    {% include 'header_links.html' %}
+</head>
+<body>
+    
+    <div class="loader-4ps" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center">
+        <h1 style="font-size: 10rem;" class="fw-bolder">4ps</h1>
+    </div>
+    {% include 'nav.html' %}
+    <div class="container register" style="display: none;">
+        <div class="p-2">
+            <div class="row mt-3">
+                <div class="col-12 col-md-6">
+                    <h5 class="fw-bolder">Personal Information</h5>
+                    
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="Enter your first name" class="form-control mt-2">
+                    
+                    <label for="lastName" class="mt-3">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Enter your last name" class="form-control mt-2">
+                    
+                    <label for="email" class="mt-3">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" class="form-control mt-2">
+                    
+                    <label for="contactNumber" class="mt-3">Contact Number</label>
+                    <input type="text" id="contactNumber" placeholder="Enter your contact number" class="form-control mt-2">
+                </div>
+            
+                <div class="col-12 col-md-6">
+                    <h5 class="fw-bolder">Additional Information</h5>
+                    
+                    <label for="address">Address (House no./Street/Barangay/City/Municipality/Region)</label>
+                    <input type="text" id="address" placeholder="Enter your address" class="form-control mt-2">
+                    
+                    <label for="gender" class="mt-3">Gender</label>
+                    <input type="text" id="gender" placeholder="Enter your gender" class="form-control mt-2">
+                    
+                    <label for="age" class="mt-3">Age</label>
+                    <input type="number" id="age" placeholder="Enter your age" class="form-control mt-2">
+                    
+                    <label for="birthday" class="mt-3">Birthday (mm/dd/yyyy)</label>
+                    <input type="date" id="birthday" class="form-control mt-2">
+                </div>
+            </div>
+            
+            
+            <div class="row mt-4">
+                <div class="col-12 col-md-6">
+                    <h5 class="fw-bolder">Occupation Details</h5>
+                    
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" placeholder="Enter your occupation" class="form-control mt-1">
+                    
+                    <label for="occupationContact" class="mt-3">Occupation Contact Number</label>
+                    <input type="text" id="occupationContact" placeholder="Enter occupation contact number" class="form-control mt-1">
+                    
+                    <label for="occupationAddress" class="mt-3">Occupation Address</label>
+                    <input type="text" id="occupationAddress" placeholder="Enter occupation address" class="form-control mt-1">
+                    
+                    <label for="monthlyIncome">Monthly Income</label>
+                    <input type="number" id="monthlyIncome" placeholder="Enter your monthly income" class="form-control mt-1">
+                </div>
+            
+                <div class="col-12 col-md-6">
+                    <h5 class="fw-bolder">Education Details</h5>
+                    
+                    <label for="highEducationAttended">High Education Attended</label>
+                    <input type="text" id="highEducationAttended" placeholder="Enter high education attended (e.g., college, high school)" class="form-control mt-1">
+            
+                    <label for="schoolName" class="mt-3">School Name</label>
+                    <input type="text" id="schoolName" placeholder="Enter school name" class="form-control mt-1">
+                    
+                    <label for="schoolAddress" class="mt-3">School Address</label>
+                    <input type="text" id="schoolAddress" placeholder="Enter school address" class="form-control mt-1">
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5 class="fw-bolder">Family Background</h5>
+            
+                    <label for="spouseName">Spouse Name</label>
+                    <input type="text" id="spouseName" placeholder="Enter spouse name" class="form-control mt-1">
+            
+                    <label for="spouseEmail" class="mt-3">Spouse Email</label>
+                    <input type="email" id="spouseEmail" placeholder="Enter spouse email" class="form-control mt-1">
+            
+                    <label for="spouseAddress" class="mt-3">Spouse Address (House no./Street/Barangay/City/Municipality/Region)</label>
+                    <input type="text" id="spouseAddress" placeholder="Enter spouse address" class="form-control mt-1">
+            
+                    <label for="spouseGender" class="mt-3">Spouse Gender</label>
+                    <input type="text" id="spouseGender" placeholder="Enter spouse gender" class="form-control mt-1">
+            
+                    <label for="spouseAge" class="mt-3">Spouse Age</label>
+                    <input type="number" id="spouseAge" placeholder="Enter spouse age" class="form-control mt-1">
+
+                    <label for="spouseContactNumber" class="mt-3">Spouse Contact Number</label>
+                    <input type="text" id="spouseContactNumber" placeholder="Enter spouse contact number" class="form-control mt-1">
+            
+                    <label for="spouseBirthday" class="mt-3">Spouse Birthday (mm/dd/yyyy)</label>
+                    <input type="date" id="spouseBirthday" class="form-control mt-1">
+                </div>
+            
+                <div class="col-md-6 pt-3">
+                    <label for="spouseGraduate" class="mt-3">Graduate</label>
+                    <input type="text" id="spouseGraduate" placeholder="Enter if graduate or non-graduate" class="form-control mt-1">
+            
+                    <label for="spouseOccupation" class="mt-3">Occupation</label>
+                    <input type="text" id="spouseOccupation" placeholder="Enter spouse occupation" class="form-control mt-1">
+            
+                    <label for="spouseOccupationContact" class="mt-3">Occupation Contact Number</label>
+                    <input type="text" id="spouseOccupationContact" placeholder="Enter occupation contact number" class="form-control mt-1">
+            
+                    <label for="spouseOccupationAddress" class="mt-3">Occupation Address</label>
+                    <input type="text" id="spouseOccupationAddress" placeholder="Enter occupation address" class="form-control mt-1">
+            
+                    <label for="spouseMonthlyIncome" class="mt-3">Monthly Income</label>
+                    <input type="number" id="spouseMonthlyIncome" placeholder="Enter monthly income" class="form-control mt-1">
+            
+                    <label for="spouseSchoolName" class="mt-3">School Name</label>
+                    <input type="text" id="spouseSchoolName" placeholder="Enter school name" class="form-control mt-1">
+            
+                    <label for="spouseSchoolAddress" class="mt-3">School Address</label>
+                    <input type="text" id="spouseSchoolAddress" placeholder="Enter school address" class="form-control mt-1">
+                </div>
+            </div>
+            
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5 class="fw-bolder">Beneficiary Details</h5>
+            
+                    <label for="beneficiaryName">Beneficiary Name</label>
+                    <input type="text" id="beneficiaryName" placeholder="Enter beneficiary name" class="form-control mt-1">
+            
+                    <label for="beneficiaryRelationship" class="mt-3">Relationship</label>
+                    <input type="text" id="beneficiaryRelationship" placeholder="Enter relationship" class="form-control mt-1">
+            
+                    <label for="beneficiaryGender" class="mt-3">Gender</label>
+                    <input type="text" id="beneficiaryGender" placeholder="Enter gender" class="form-control mt-1">
+            
+                    <label for="beneficiaryAge" class="mt-3">Age</label>
+                    <input type="number" id="beneficiaryAge" placeholder="Enter age" class="form-control mt-1">
+            
+                    <label for="beneficiaryBirthday" class="mt-3">Birthday (mm/dd/yyyy)</label>
+                    <input type="date" id="beneficiaryBirthday" class="form-control mt-1">
+            
+                    <label for="beneficiaryHealthCenterName" class="mt-3">Health Center Name</label>
+                    <input type="text" id="beneficiaryHealthCenterName" placeholder="Enter health center name" class="form-control mt-1">
+            
+                    <label for="beneficiaryHealthCenterAddress" class="mt-3">Health Center Address</label>
+                    <input type="text" id="beneficiaryHealthCenterAddress" placeholder="Enter health center address" class="form-control mt-1">
+            
+                    <label for="beneficiaryHealthCenterId">Health Center ID Number</label>
+                    <input type="text" id="beneficiaryHealthCenterId" placeholder="Enter health center ID number" class="form-control mt-1">
+            
+                    <label for="beneficiaryPicture" class="mt-3">Upload a Picture</label>
+                    <input type="file" id="beneficiaryPicture" class="form-control mt-1">
+                </div>
+            
+                <div class="col-md-6">
+                    <h5 class="fw-bolder">Child's Details</h5>
+            
+                    <label for="childName">Child's Name</label>
+                    <input type="text" id="childName" placeholder="Enter child's name" class="form-control mt-1">
+            
+                    <label for="childRelationship" class="mt-3">Relationship</label>
+                    <input type="text" id="childRelationship" placeholder="Enter relationship" class="form-control mt-1">
+            
+                    <label for="childGender" class="mt-3">Gender</label>
+                    <input type="text" id="childGender" placeholder="Enter child's gender" class="form-control mt-1">
+            
+                    <label for="childAge" class="mt-3">Age</label>
+                    <input type="number" id="childAge" placeholder="Enter child's age" class="form-control mt-1">
+            
+                    <label for="childBirthday" class="mt-3">Birthday (mm/dd/yyyy)</label>
+                    <input type="date" id="childBirthday" class="form-control mt-1">
+            
+                    <label for="childSchoolName" class="mt-3">School Name</label>
+                    <input type="text" id="childSchoolName" placeholder="Enter school name" class="form-control mt-1">
+            
+                    <label for="childSchoolAddress" class="mt-3">School Address</label>
+                    <input type="text" id="childSchoolAddress" placeholder="Enter school address" class="form-control mt-1">
+            
+                    <label for="childSchoolId">School ID Number</label>
+                    <input type="text" id="childSchoolId" placeholder="Enter school ID number" class="form-control mt-1">
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+    {% include 'footer_links.html' %}
+</body>
+</html>
