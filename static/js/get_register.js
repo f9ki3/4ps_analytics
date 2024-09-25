@@ -85,7 +85,7 @@ $(document).ready(function () {
                                 $('#createAccount').hide()
                                 setTimeout(() => {
                                     // Redirect to the login page
-                                    window.location.href = "/login";
+                                    window.location.href = "/";
                                 }, 1000);
                             }, 1000);
 
