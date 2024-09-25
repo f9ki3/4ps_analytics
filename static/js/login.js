@@ -25,28 +25,40 @@ $(document).ready(function () {
             $('#loginpassword').addClass('is-valid').removeClass('is-invalid');
         }
 
-        // Log email and password to the console if valid
+        // If form is valid, make AJAX request
         if (isValid) {
-            // console.log('Email:', email);
-            // console.log('Password:', password);
-
-            // Here you can add AJAX call to send email and password to the server if needed
             $.ajax({
                 url: '/loginAccount', // Your server endpoint
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ email: email, password: password }),
                 success: function(response) {
-                    // Handle successful login
-                    // console.log(response);
-                    window.location.href = '/home'
+                    if (response.success) {
+                        // Redirect to home page or show success message
+                        window.location.href = '/home';
+                    } else {
+                        // If login fails, mark both fields as invalid
+                        $('#loginemail').addClass('is-invalid').removeClass('is-valid');
+                        $('#loginpassword').addClass('is-invalid').removeClass('is-valid');
+
+                        // Reset and show the login failed alert
+                        $('#loginFailed').hide().show(); // Ensures the alert is shown again if dismissed earlier
+                    }
                 },
                 error: function(xhr, status, error) {
-                    // Handle login error
-                    // console.error('Login failed', error);
-                    $('#loginFailed').show()
+                    // If login fails, mark both fields as invalid
+                    $('#loginemail').addClass('is-invalid').removeClass('is-valid');
+                    $('#loginpassword').addClass('is-invalid').removeClass('is-valid');
+
+                    // Reset and show the login failed alert
+                    $('#loginFailed').hide().show(); // Ensures the alert is shown again if dismissed earlier
                 }
             });
         }
+    });
+
+    // Optional: Handle the dismiss button click to just hide the alert
+    $('.btn-close').on('click', function() {
+        $('#loginFailed').hide(); // Just hide it instead of letting Bootstrap remove it from the DOM
     });
 });
