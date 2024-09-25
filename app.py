@@ -7,20 +7,20 @@ app.secret_key = '4psjasgasuqh'
 @app.route('/', methods=['GET'])
 def login():
     if 'user_id' in session:
-        return redirect(url_for('/login'))  # Redirect to the home page if logged in
+        return redirect(url_for('home'))  # Redirect to the home page if logged in
     
-    return render_template('register.html')  # Changed to show login form if not logged in
+    return render_template('login.html')  # Changed to show login form if not logged in
 
 @app.route('/logout', methods=['GET'])
 def logout():
     session.clear()
     return redirect(url_for('login'))  # Redirect to the login page after logging out
 
-@app.route('/login', methods=['GET'])
+@app.route('/register', methods=['GET'])
 def register():
     if 'user_id' in session:
         return redirect(url_for('home'))  # Redirect to the home page if logged in
-    return render_template('login.html')
+    return render_template('register.html')
 
 @app.route('/home', methods=['GET'])
 def home():
