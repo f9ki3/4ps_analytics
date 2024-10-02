@@ -1,0 +1,10 @@
+body {
+    background-image: url('/static/img/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* This makes the background image fixed */
+}
+
+.bg-card{
+    background-color: #fefbc0;
+}
