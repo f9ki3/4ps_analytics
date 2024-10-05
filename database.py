@@ -2,9 +2,12 @@ import sqlite3
 
 class Database:
     def __init__(self):
-        self.conn = sqlite3.connect('4ps.db')  
-        self.database = self.conn.cursor()   
+        # Connect to SQLite database
+        self.conn = sqlite3.connect('4ps.db')
+        self.database = self.conn.cursor()
         
+    def close(self):
+        self.conn.close()
           
 
 if __name__ == "__main__":
