@@ -8,15 +8,15 @@
         series: [
             {
                 name: 'Income Level',
-                data: [20, 60, 60, 80, 100, 80]
+                data: [20, 60, 60, 20, 100, 80]
             },
             {
                 name: 'Education',
-                data: [30, 50, 10, 90, 60, 40]
+                data: [30, 12, 10, 90, 60, 40]
             },
             {
                 name: 'Employment Status',
-                data: [10, 30, 50, 30, 90, 100]
+                data: [10, 30, 12, 32, 90, 7]
             }
         ],
         xaxis: {

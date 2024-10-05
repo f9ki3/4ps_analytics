@@ -1,14 +1,6 @@
 import sqlite3
 import pandas as pd
-
-class Database:
-    def __init__(self):
-        # Connect to SQLite database
-        self.conn = sqlite3.connect('4ps.db')
-        self.database = self.conn.cursor()
-        
-    def close(self):
-        self.conn.close()
+from database import *
 
 class Data(Database):
     def create_table(self):
@@ -29,23 +21,6 @@ class Data(Database):
                 survey_date DATE
             );
         ''')
-        self.conn.commit()
-
-    def insert_sample_data(self):
-        # Insert sample data into the table
-        sample_data = [
-            ('John Doe', 'Male', 30, 'Low', 15000, 'High School', 'Graduate', 'School A', 'Employed', 'Healthy', '2023-10-01'),
-            ('Jane Smith', 'Female', 28, 'Medium', 30000, 'College', 'Graduate', 'School B', 'Unemployed', 'Healthy', '2023-10-02'),
-            ('Alice Johnson', 'Female', 22, 'Low', 18000, 'High School', 'Graduate', 'School A', 'Employed', 'Healthy', '2023-10-03'),
-            ('Bob Brown', 'Male', 35, 'High', 50000, 'College', 'Graduate', 'School C', 'Employed', 'Healthy', '2023-10-04'),
-            ('Charlie Davis', 'Male', 29, 'Medium', 25000, 'College', 'Graduate', 'School D', 'Employed', 'Healthy', '2023-10-05'),
-            ('Daisy Wilson', 'Female', 40, 'Low', 12000, 'High School', 'Graduate', 'School A', 'Unemployed', 'Healthy', '2023-10-06'),
-        ]
-        
-        self.database.executemany('''
-            INSERT INTO FourPsData (name, sex, age, income_level, monthly_income, education, education_status, school, employment_status, health_status, survey_date)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', sample_data)
         self.conn.commit()
 
     def get_data(self):
@@ -79,7 +54,6 @@ class Data(Database):
 if __name__ == "__main__":
     data_instance = Data()
     data_instance.create_table()  # Create table if it doesn't exist
-    data_instance.insert_sample_data()  # Insert sample data
     percentages = data_instance.get_percentage_distribution()
     
     print("Income Level Distribution (%):\n", percentages['income_distribution'])

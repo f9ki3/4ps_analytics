@@ -8,15 +8,15 @@
         series: [
             {
                 name: 'Health',
-                data: [20, 60, 60, 80, 100, 80]
+                data: [20, 45, 60, 80, 100, 80]
             },
             {
                 name: 'Education',
-                data: [30, 50, 10, 90, 60, 40]
+                data: [30, 50, 23, 90, 60, 40]
             },
             {
                 name: 'Financial Stability',
-                data: [10, 30, 50, 30, 90, 100]
+                data: [10, 30, 12, 30, 90, 100]
             }
         ],
         xaxis: {

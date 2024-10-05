@@ -7,11 +7,11 @@ var options = {
     series: [
         {
             name: 'Emergency Needs',
-            data: [30, 70, 40, 80, 90, 100] // Example data for Emergency Needs
+            data: [30, 23, 40, 80, 90, 100] // Example data for Emergency Needs
         },
         {
             name: 'Livelihood Support',
-            data: [20, 50, 60, 70, 80, 90] // Example data for Livelihood Support
+            data: [20, 12, 60, 70, 43, 90] // Example data for Livelihood Support
         }
     ],
     xaxis: {
