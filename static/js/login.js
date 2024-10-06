@@ -47,6 +47,8 @@ $(document).ready(function () {
 
                             // Reset and show the login failed alert
                             $('#loginFailed').hide().show(); // Ensures the alert is shown again if dismissed earlier
+                            $('#loginLoading').hide()
+                            $('#btnLogin').show()
                         }
                     },
                     error: function(xhr, status, error) {
@@ -56,6 +58,8 @@ $(document).ready(function () {
 
                         // Reset and show the login failed alert
                         $('#loginFailed').hide().show(); // Ensures the alert is shown again if dismissed earlier
+                        $('#loginLoading').hide()
+                        $('#btnLogin').show()
                     }
                 });
             }else{

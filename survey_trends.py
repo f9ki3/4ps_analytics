@@ -76,12 +76,68 @@ class Survey(Database):
             'emergency_percentage': emergency_percentage,
             'livelihood_percentage': livelihood_percentage
         }
+    
+    def get_monthly_response_percentage_2024(self):
+        """Get the monthly percentage of responses for the year 2024."""
+        months = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ]
+        
+        percent_list = []  # List to hold percentage values
+        month_list = []    # List to hold month names
+
+        for month in range(1, 13):  # Loop through months 1 to 12
+            # Format month as two digits
+            month_str = f"{month:02d}"
+
+            # Count total responses for the month
+            total_query = '''
+            SELECT COUNT(*) FROM survey_trends WHERE strftime('%Y-%m', survey_date) = '2024-?'
+            '''
+            total_cursor = self.database.execute(total_query.replace('?', month_str))
+            total_count = total_cursor.fetchone()[0]
+
+            # Count Emergency Needs responses for the month
+            emergency_query = '''
+            SELECT COUNT(*) FROM survey_trends WHERE response = 'Emergency Needs' AND strftime('%Y-%m', survey_date) = '2024-?'
+            '''
+            emergency_cursor = self.database.execute(emergency_query.replace('?', month_str))
+            emergency_count = emergency_cursor.fetchone()[0]
+
+            # Count Livelihood Support responses for the month
+            livelihood_query = '''
+            SELECT COUNT(*) FROM survey_trends WHERE response = 'Livelihood Support' AND strftime('%Y-%m', survey_date) = '2024-?'
+            '''
+            livelihood_cursor = self.database.execute(livelihood_query.replace('?', month_str))
+            livelihood_count = livelihood_cursor.fetchone()[0]
+
+            # Calculate percentages
+            if total_count > 0:
+                emergency_percentage = (emergency_count / total_count) * 100
+                livelihood_percentage = (livelihood_count / total_count) * 100
+            else:
+                emergency_percentage = 0
+                livelihood_percentage = 0
+            
+            # Aggregate both percentages for the month
+            total_percentage = emergency_percentage + livelihood_percentage
+            
+            # Append results to the lists
+            percent_list.append(total_percentage)  # Store total response percentage
+            month_list.append(months[month - 1])   # Store month name
+        
+        # Return results as a dictionary with the required format
+        return {
+            'percent': percent_list,
+            'month': month_list
+        }
 
 
-# # Example of usage
-# if __name__ == "__main__":
-#     survey = Survey()
-#     survey.create_survey_table()
+# Example of usage
+if __name__ == "__main__":
+    survey = Survey()
+    print(survey.get_monthly_response_percentage_2024())
 
     # # Example response (You would get this from the HTML form submission)
     # example_response = "EMERGENCY NEEDS"  # Or "LIVELIHOOD SUPPORT"
