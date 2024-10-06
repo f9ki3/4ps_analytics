@@ -76,8 +76,9 @@
         url: "/response-percentage",
         dataType: "json",
         success: function (response) {
-            const emergency_percentage = response.emergency_percentage
-            const livelihood_percentage = response.livelihood_percentage
+            const emergency_percentage = Math.round(response.emergency_percentage);
+            const livelihood_percentage = Math.round(response.livelihood_percentage);
+
             console.log(livelihood_percentage)
             $('#emergency-needs-percentage').text(emergency_percentage+"%")
             $('#livelihood-support-percentage').text(livelihood_percentage+"%")
