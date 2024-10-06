@@ -1,59 +1,85 @@
-// Initialize the chart
-var options = {
-    chart: {
-        type: 'line',
-        height: 400
-    },
-    series: [
-        {
-            name: 'Emergency Needs',
-            data: [30, 23, 40, 80, 90, 100] // Example data for Emergency Needs
-        },
-        {
-            name: 'Livelihood Support',
-            data: [20, 12, 60, 70, 43, 90] // Example data for Livelihood Support
+    // Fetch data from the Flask endpoint
+    fetch('/monthly-survey-statistics')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
         }
-    ],
-    xaxis: {
-        categories: ['January', 'February', 'March', 'April', 'May', 'June']
-    },
-    title: {
-        text: 'Monthly Data Representation',
-        align: 'center',
-        style: {
-            fontSize: '20px',
-            fontWeight: 'bold'
-        }
-    },
-    stroke: {
-        width: 2,
-        curve: 'smooth'
-    },
-    markers: {
-        size: 5
-    },
-    yaxis: {
-        title: {
-            text: 'Values',
-            style: {
-                fontSize: '12px',
-                fontWeight: 'bold'
+        return response.json();
+    })
+    .then(data => {
+        // Initialize the chart with dynamic data
+        var options = {
+            chart: {
+                type: 'line',
+                height: 400
+            },
+            series: [
+                {
+                    name: 'Emergency Needs',
+                    data: data.emergency_percent  // Use the emergency_percent data from the response
+                },
+                {
+                    name: 'Livelihood Support',
+                    data: data.livelihood_percent  // Use the livelihood_percent data from the response
+                }
+            ],
+            xaxis: {
+                categories: data.month // Use the month data from the response
+            },
+            title: {
+                text: 'Monthly Data Representation',
+                align: 'center',
+                style: {
+                    fontSize: '20px',
+                    fontWeight: 'bold'
+                }
+            },
+            stroke: {
+                width: 2,
+                curve: 'smooth'
+            },
+            markers: {
+                size: 5
+            },
+            yaxis: {
+                title: {
+                    text: 'Values',
+                    style: {
+                        fontSize: '12px',
+                        fontWeight: 'bold'
+                    }
+                },
+                min: 0,
+                max: 100,
+                tickAmount: 5,
+                labels: {
+                    formatter: function (val) {
+                        return val + '%';
+                    }
+                }
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'center'
             }
-        },
-        min: 0,
-        max: 100,
-        tickAmount: 5,
-        labels: {
-            formatter: function (val) {
-                return val + '%';
-            }
-        }
-    },
-    legend: {
-        position: 'top',
-        horizontalAlign: 'center'
-    }
-};
+        };
 
-var chart = new ApexCharts(document.querySelector("#dashboard2"), options);
-chart.render();
+        var chart = new ApexCharts(document.querySelector("#dashboard2"), options);
+        chart.render();
+    })
+    .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/response-percentage",
+        dataType: "json",
+        success: function (response) {
+            const emergency_percentage = response.emergency_percentage
+            const livelihood_percentage = response.livelihood_percentage
+            console.log(livelihood_percentage)
+            $('#emergency-needs-percentage').text(emergency_percentage+"%")
+            $('#livelihood-support-percentage').text(livelihood_percentage+"%")
+        }
+    });

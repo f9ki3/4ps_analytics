@@ -120,5 +120,20 @@ def submit_survey():
 def thank_you():
     return "Thank you for your response!"
 
+@app.route('/monthly-survey-statistics', methods=['GET'])
+def monthly_survey_statistics():
+    """
+    Endpoint to get monthly survey response percentages for the year 2024.
+    """
+    survey = Survey()  # Initialize the Survey class
+    monthly_percentages = survey.get_monthly_response_percentage_2024()  # Call the method
+    return jsonify(monthly_percentages)  # Return the results as JSON
+
+@app.route('/response-percentage', methods=['GET'])
+def response_percentage():
+    """Endpoint to get the percentage of Emergency Needs and Livelihood Support responses."""
+    percentages = Survey().get_response_percentage()  # Call your method
+    return jsonify(percentages)  # Return as JSON
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")

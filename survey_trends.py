@@ -78,14 +78,15 @@ class Survey(Database):
         }
     
     def get_monthly_response_percentage_2024(self):
-        """Get the monthly percentage of responses for the year 2024."""
+        """Get the monthly percentage of Emergency Needs and Livelihood Support responses for the year 2024."""
         months = [
             'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ]
-        
-        percent_list = []  # List to hold percentage values
-        month_list = []    # List to hold month names
+
+        emergency_percentages = []  # List to hold Emergency Needs percentages
+        livelihood_percentages = []  # List to hold Livelihood Support percentages
+        month_list = []              # List to hold month names
 
         for month in range(1, 13):  # Loop through months 1 to 12
             # Format month as two digits
@@ -120,24 +121,24 @@ class Survey(Database):
                 emergency_percentage = 0
                 livelihood_percentage = 0
             
-            # Aggregate both percentages for the month
-            total_percentage = emergency_percentage + livelihood_percentage
-            
             # Append results to the lists
-            percent_list.append(total_percentage)  # Store total response percentage
-            month_list.append(months[month - 1])   # Store month name
-        
+            emergency_percentages.append(emergency_percentage)  # Store Emergency Needs percentage
+            livelihood_percentages.append(livelihood_percentage)  # Store Livelihood Support percentage
+            month_list.append(months[month - 1])               # Store month name
+
         # Return results as a dictionary with the required format
         return {
-            'percent': percent_list,
+            'emergency_percent': emergency_percentages,
+            'livelihood_percent': livelihood_percentages,
             'month': month_list
         }
 
 
-# Example of usage
-if __name__ == "__main__":
-    survey = Survey()
-    print(survey.get_monthly_response_percentage_2024())
+
+# # Example of usage
+# if __name__ == "__main__":
+#     survey = Survey()
+#     print(survey.get_monthly_response_percentage_2024())
 
     # # Example response (You would get this from the HTML form submission)
     # example_response = "EMERGENCY NEEDS"  # Or "LIVELIHOOD SUPPORT"
