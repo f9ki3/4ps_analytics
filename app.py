@@ -118,7 +118,10 @@ def submit_survey():
 
 @app.route('/thank_you')
 def thank_you():
-    return "Thank you for your response!"
+    return '''
+        <h1>Thank you for submitting the survey!</h1>
+        <a href="/trends">Reload Trends</a>
+    '''
 
 @app.route('/monthly-survey-statistics', methods=['GET'])
 def monthly_survey_statistics():
