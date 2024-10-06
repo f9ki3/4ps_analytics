@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for
 from account import *
-
+from survey_trends import *
+from datetime import datetime  # Import datetime for getting today's date
 app = Flask(__name__)
 app.secret_key = '4psjasgasuqh'
 
@@ -53,7 +54,11 @@ def trends():
     if 'user_id' not in session:
         return redirect(url_for('login'))  # Redirect to the login page if not logged in
     
-    return render_template('trends.html')
+    user_id = session.get('user_id')  # Get the user ID from the session
+    survey = Survey()
+    user_submitted = survey.user_has_submitted(user_id) if user_id else False
+    previous_response = survey.get_user_response(user_id) if user_id else None
+    return render_template('trends.html', user_submitted=user_submitted, previous_response=previous_response)
 
 @app.route('/createAccount', methods=['POST'])
 def createAccounts():
@@ -102,6 +107,18 @@ def loginAccount():
     else:
         return jsonify({'success': False, 'message': 'Invalid email or password.'}), 401
 
-    
+@app.route('/submit_survey', methods=['POST'])
+def submit_survey():
+    response = request.form.get('supportOption')
+    survey_date = datetime.today().date()  # Get today's date
+    user_id = session['user_id']
+    survey = Survey()
+    survey.insert_response(response, user_id, survey_date)  # Pass the response and date
+    return redirect(url_for('thank_you'))
+
+@app.route('/thank_you')
+def thank_you():
+    return "Thank you for your response!"
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")

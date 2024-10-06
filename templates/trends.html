@@ -47,28 +47,39 @@
                             As a 4Ps member, what other factors affect how you use the cash assistance?
                         </h5>
                         <hr>
-                        <!-- Emergency Needs Checkbox -->
-                        <div class="d-flex flex-row align-items-start mb-2">
-                            <div class="pe-3">
-                                <input type="checkbox" class="form-check-input" style="width: 20px; height: 20px;">
-                            </div>
-                            <div>
-                                <h5>EMERGENCY NEEDS</h5>
-                                <p>(e.g. medical emergencies, sudden loss, property damage due to natural disasters)</p>
-                            </div>
+                        <div>
+                            <form action="/submit_survey" method="POST">
+                                <!-- Emergency Needs Radio Button -->
+                                <div class="d-flex flex-row align-items-start mb-2">
+                                    <div class="pe-3">
+                                        <input type="radio" class="form-check-input" name="supportOption" id="emergencyNeeds" value="Emergency Needs" style="width: 20px; height: 20px;" required {% if user_submitted %}disabled{% endif %} {% if previous_response and previous_response[0] == 'Emergency Needs' %}checked{% endif %}>
+                                    </div>
+                                    <div>
+                                        <label for="emergencyNeeds">
+                                            <h5>EMERGENCY NEEDS</h5>
+                                            <p>(e.g. medical emergencies, sudden loss, property damage due to natural disasters)</p>
+                                        </label>
+                                    </div>
+                                </div>
+                            
+                                <!-- Livelihood Support Radio Button -->
+                                <div class="d-flex flex-row align-items-start mb-2">
+                                    <div class="pe-3">
+                                        <input type="radio" class="form-check-input" name="supportOption" id="livelihoodSupport" value="Livelihood Support" style="width: 20px; height: 20px;" required {% if user_submitted %}disabled{% endif %} {% if previous_response and previous_response[0] == 'Livelihood Support' %}checked{% endif %}>
+                                    </div>
+                                    <div>
+                                        <label for="livelihoodSupport">
+                                            <h5>LIVELIHOOD SUPPORT</h5>
+                                            <p>(invest in small businesses, income-generating activities)</p>
+                                        </label>
+                                    </div>
+                                </div>
+                            
+                                <button type="submit" class="btn btn-success w-100 mb-4" {% if user_submitted %}disabled{% endif %}>Submit</button>
+                            </form>
+                            
                         </div>
-                        <!-- Livelihood Support Checkbox -->
-                        <div class="d-flex flex-row align-items-start mb-2">
-                            <div class="pe-3">
-                                <input type="checkbox" class="form-check-input" style="width: 20px; height: 20px;">
-                            </div>
-                            <div>
-                                <h5>LIVELIHOOD SUPPORT</h5>
-                                <p>(invest in small businesses, income-generating activities)</p>
-                            </div>
-                        </div>
-                        
-                        <button class="btn btn-success w-100 mb-4">Submit</button>
+                                            
                     </div>
                 </div>
             </div>
