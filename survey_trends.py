@@ -113,10 +113,10 @@ class Survey(Database):
             livelihood_cursor = self.database.execute(livelihood_query.replace('?', month_str))
             livelihood_count = livelihood_cursor.fetchone()[0]
 
-            # Calculate percentages
+            # Calculate percentages and convert them to whole numbers
             if total_count > 0:
-                emergency_percentage = (emergency_count / total_count) * 100
-                livelihood_percentage = (livelihood_count / total_count) * 100
+                emergency_percentage = int((emergency_count / total_count) * 100)
+                livelihood_percentage = int((livelihood_count / total_count) * 100)
             else:
                 emergency_percentage = 0
                 livelihood_percentage = 0
@@ -132,6 +132,7 @@ class Survey(Database):
             'livelihood_percent': livelihood_percentages,
             'month': month_list
         }
+
 
 
 
