@@ -15,11 +15,11 @@
             },
             series: [
                 {
-                    name: 'Livelihood Support',
+                    name: 'Emergency Needs',
                     data: data.emergency_percent  // Use the emergency_percent data from the response
                 },
                 {
-                    name: 'Emergency Needs',
+                    name: 'Livelihood Support',
                     data: data.livelihood_percent  // Use the livelihood_percent data from the response
                 }
             ],
