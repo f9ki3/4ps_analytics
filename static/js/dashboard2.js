@@ -10,7 +10,7 @@
         // Initialize the chart with dynamic data
         var options = {
             chart: {
-                type: 'line',
+                type: 'bar',
                 height: 400
             },
             series: [

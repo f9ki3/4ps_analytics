@@ -32,6 +32,14 @@ def home():
     # If session exists, render the home page
     return render_template('admin-home.html')
 
+@app.route('/thank_you')
+def thank_you():
+    # Check if user data exists in session
+    if 'user_id' not in session:
+        return redirect(url_for('login'))  # Redirect to the login page if not logged in
+    # If session exists, render the home page
+    return render_template('/thank_u.html')
+
 @app.route('/about', methods=['GET'])
 def about():
     if 'user_id' not in session:
@@ -115,13 +123,6 @@ def submit_survey():
     survey = Survey()
     survey.insert_response(response, user_id, survey_date)  # Pass the response and date
     return redirect(url_for('thank_you'))
-
-@app.route('/thank_you')
-def thank_you():
-    return '''
-        <h1>Thank you for submitting the survey!</h1>
-        <a href="/trends">Reload Trends</a>
-    '''
 
 @app.route('/monthly-survey-statistics', methods=['GET'])
 def monthly_survey_statistics():

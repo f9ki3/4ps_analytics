@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4ps</title>
+    {% include 'header_links.html' %}
+</head>
+<body>
+    
+    <div class="loader-4ps" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: white">
+        <img src="../static/img/logo.png" class="m-0 p-0" alt="">
+    </div>
+    {% include 'nav.html' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4"></div>
+            <div class="bg-card rounded-4 p-4 mt-5 col-12 col-md-4 border rounded d-flex flex-column justify-content-center align-items-center">
+                <h2 class="ms-3 mt-4 fw-bolder">Thank you for submitting the survey!</h2>
+                <img style="width: 300px;" src="../static/img/thank_u.svg" alt="">
+                <a class="btn mt-3 w-75 btn-success mb-4" href="/trends">Go Back</a>
+            </div>
+            <div class="col-12 col-md-4"></div>
+        </div>
+    </div>
+    
+    {% include 'footer_links.html' %}
+</body>
+</html>
